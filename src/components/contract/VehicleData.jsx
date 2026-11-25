@@ -1,4 +1,4 @@
-export default function VehicleData() {
+export default function VehicleData({ readOnly = false, values = {} }) {
   return (
     <section className="vehicle-data">
       <h2>DATOS DEL VEHÍCULO</h2>
@@ -10,7 +10,9 @@ export default function VehicleData() {
             id="vehicle-brand"
             type="text"
             placeholder="Ingrese marca del vehículo"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['vehicle-brand'] ?? '' : undefined}
           />
         </div>
 
@@ -20,7 +22,9 @@ export default function VehicleData() {
             id="vehicle-model"
             type="text"
             placeholder="Ingrese modelo del vehículo"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['vehicle-model'] ?? '' : undefined}
           />
         </div>
 
@@ -30,7 +34,9 @@ export default function VehicleData() {
             id="vehicle-year"
             type="number"
             placeholder="Ej. 2024"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['vehicle-year'] ?? '' : undefined}
           />
         </div>
 
@@ -40,7 +46,9 @@ export default function VehicleData() {
             id="vehicle-color"
             type="text"
             placeholder="Ingrese color del vehículo"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['vehicle-color'] ?? '' : undefined}
           />
         </div>
 
@@ -50,7 +58,9 @@ export default function VehicleData() {
             id="vehicle-plate"
             type="text"
             placeholder="Ingrese número de placa"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['vehicle-plate'] ?? '' : undefined}
           />
         </div>
 
@@ -60,7 +70,9 @@ export default function VehicleData() {
             id="vehicle-chassis"
             type="text"
             placeholder="Ingrese número de chasis"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['vehicle-chassis'] ?? '' : undefined}
           />
         </div>
 
@@ -70,7 +82,9 @@ export default function VehicleData() {
             id="vehicle-engine"
             type="text"
             placeholder="Ingrese número de motor"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['vehicle-engine'] ?? '' : undefined}
           />
         </div>
       </div>

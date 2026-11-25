@@ -270,17 +270,18 @@ function NewContract() {
       .filter(Boolean);
 
     const contract = {
-      id: globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`,
-      createdAt: new Date().toISOString(),
-      ...formValues,
-      equipment,
-      fuelLevel,
-      damageMarkers,
-      destination,
-      selectedLocation,
-      weather,
-      travelRecommendation: weather ? createTravelRecommendation(weather) : '',
-    };
+  id: globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+  createdAt: new Date().toISOString(),
+  createdBy: sessionStorage.getItem('advance-current-user') || '',
+  ...formValues,
+  equipment,
+  fuelLevel,
+  damageMarkers,
+  destination,
+  selectedLocation,
+  weather,
+  travelRecommendation: weather ? createTravelRecommendation(weather) : '',
+};
 
     setIsSaving(true);
 

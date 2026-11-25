@@ -1,9 +1,15 @@
 export default function DateAndMileage({
+  readOnly = false,
+  values = {},
   departureDate,
   onDepartureDateChange,
   departureTime,
   onDepartureTimeChange,
 }) {
+  const getValue = (field) => (
+    readOnly ? values[field] ?? '' : undefined
+  );
+
   return (
     <section className="contract-dates">
       <div className="contract-date-group">
@@ -13,9 +19,10 @@ export default function DateAndMileage({
             <input
               id="departure-date"
               type="date"
-              required
-              value={departureDate}
-              onChange={onDepartureDateChange}
+              required={!readOnly}
+              readOnly={readOnly}
+              value={readOnly ? getValue('departure-date') : departureDate}
+              onChange={readOnly ? undefined : onDepartureDateChange}
             />
           </div>
         </div>
@@ -26,9 +33,10 @@ export default function DateAndMileage({
             <input
               id="departure-time"
               type="time"
-              required
-              value={departureTime}
-              onChange={onDepartureTimeChange}
+              required={!readOnly}
+              readOnly={readOnly}
+              value={readOnly ? getValue('departure-time') : departureTime}
+              onChange={readOnly ? undefined : onDepartureTimeChange}
             />
           </div>
         </div>
@@ -41,6 +49,8 @@ export default function DateAndMileage({
             <input
               id="arrival-date"
               type="date"
+              readOnly={readOnly}
+              value={getValue('arrival-date')}
             />
           </div>
         </div>
@@ -51,6 +61,8 @@ export default function DateAndMileage({
             <input
               id="arrival-time"
               type="time"
+              readOnly={readOnly}
+              value={getValue('arrival-time')}
             />
           </div>
         </div>
@@ -63,8 +75,10 @@ export default function DateAndMileage({
             id="departure-kms"
             type="number"
             min="0"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
             placeholder="Kilometraje"
+            value={getValue('departure-kms')}
           />
         </div>
       </div>
@@ -76,7 +90,9 @@ export default function DateAndMileage({
             id="arrival-kms"
             type="number"
             min="0"
+            readOnly={readOnly}
             placeholder="Kilometraje"
+            value={getValue('arrival-kms')}
           />
         </div>
       </div>

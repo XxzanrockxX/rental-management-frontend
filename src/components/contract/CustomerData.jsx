@@ -1,5 +1,4 @@
-
-export default function CustomerData() {
+export default function CustomerData({ readOnly = false, values = {} }) {
   return (
     <section className="customer-data">
       <h2>DATOS PERSONALES</h2>
@@ -11,7 +10,9 @@ export default function CustomerData() {
             id="customer-name"
             type="text"
             placeholder="Ingrese nombres y apellidos"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['customer-name'] ?? '' : undefined}
           />
         </div>
 
@@ -21,7 +22,9 @@ export default function CustomerData() {
             id="customer-id"
             type="text"
             placeholder="Ingrese número de cédula"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['customer-id'] ?? '' : undefined}
           />
         </div>
 
@@ -31,7 +34,9 @@ export default function CustomerData() {
             id="customer-address"
             type="text"
             placeholder="Ingrese dirección del cliente"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['customer-address'] ?? '' : undefined}
           />
         </div>
 
@@ -41,7 +46,9 @@ export default function CustomerData() {
             id="customer-email"
             type="email"
             placeholder="Ingrese correo electrónico"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['customer-email'] ?? '' : undefined}
           />
         </div>
 
@@ -51,7 +58,9 @@ export default function CustomerData() {
             id="customer-phone"
             type="tel"
             placeholder="Ingrese número de teléfono"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['customer-phone'] ?? '' : undefined}
           />
         </div>
 
@@ -61,7 +70,9 @@ export default function CustomerData() {
             id="work-reference"
             type="text"
             placeholder="Ingrese nombre de referencia laboral"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['work-reference'] ?? '' : undefined}
           />
         </div>
 
@@ -71,7 +82,9 @@ export default function CustomerData() {
             id="work-reference-phone"
             type="tel"
             placeholder="Ingrese teléfono de referencia"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['work-reference-phone'] ?? '' : undefined}
           />
         </div>
 
@@ -81,7 +94,9 @@ export default function CustomerData() {
             id="personal-reference"
             type="text"
             placeholder="Ingrese nombre de referencia personal"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['personal-reference'] ?? '' : undefined}
           />
         </div>
 
@@ -91,7 +106,9 @@ export default function CustomerData() {
             id="personal-reference-phone"
             type="tel"
             placeholder="Ingrese teléfono de referencia"
-            required
+            required={!readOnly}
+            readOnly={readOnly}
+            value={readOnly ? values['personal-reference-phone'] ?? '' : undefined}
           />
         </div>
       </div>

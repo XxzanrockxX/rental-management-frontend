@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
@@ -7,6 +6,12 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get('email').trim().toLowerCase();
+
+    sessionStorage.setItem('advance-current-user', email);
+
     navigate('/home');
   };
 
@@ -57,4 +62,3 @@ function Login() {
 }
 
 export default Login;
-
