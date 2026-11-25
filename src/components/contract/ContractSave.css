@@ -1,0 +1,77 @@
+/* Botón y estado del guardado */
+.contract-save {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.contract-save__button {
+  min-width: 175px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 9px 18px;
+  border: 1px solid #12345a;
+  border-radius: 7px;
+  background-color: #12345a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.contract-save__button:hover:not(:disabled) {
+  background-color: #1d4b7e;
+  transform: translateY(-1px);
+}
+
+.contract-save__button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.contract-save__feedback {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.contract-save__feedback--success {
+  color: #16803c;
+}
+
+.contract-save__feedback--error {
+  color: #b42318;
+}
+
+.contract-save__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgb(255 255 255 / 40%);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: contract-save-spin 0.7s linear infinite;
+}
+
+@keyframes contract-save-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contract-save {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .contract-save__button {
+    width: 100%;
+  }
+}

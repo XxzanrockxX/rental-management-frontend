@@ -1,8 +1,13 @@
+
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    navigate('/home');
   };
 
   return (
@@ -52,3 +57,4 @@ function Login() {
 }
 
 export default Login;
+

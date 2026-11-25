@@ -1,0 +1,79 @@
+export default function VehicleData() {
+  return (
+    <section className="vehicle-data">
+      <h2>DATOS DEL VEHÍCULO</h2>
+
+      <div className="vehicle-data__grid">
+        <div className="customer-field">
+          <label htmlFor="vehicle-brand">Marca</label>
+          <input
+            id="vehicle-brand"
+            type="text"
+            placeholder="Ingrese marca del vehículo"
+            required
+          />
+        </div>
+
+        <div className="customer-field">
+          <label htmlFor="vehicle-model">Modelo</label>
+          <input
+            id="vehicle-model"
+            type="text"
+            placeholder="Ingrese modelo del vehículo"
+            required
+          />
+        </div>
+
+        <div className="customer-field">
+          <label htmlFor="vehicle-year">Año</label>
+          <input
+            id="vehicle-year"
+            type="number"
+            placeholder="Ej. 2024"
+            required
+          />
+        </div>
+
+        <div className="customer-field">
+          <label htmlFor="vehicle-color">Color</label>
+          <input
+            id="vehicle-color"
+            type="text"
+            placeholder="Ingrese color del vehículo"
+            required
+          />
+        </div>
+
+        <div className="customer-field">
+          <label htmlFor="vehicle-plate">Placas</label>
+          <input
+            id="vehicle-plate"
+            type="text"
+            placeholder="Ingrese número de placa"
+            required
+          />
+        </div>
+
+        <div className="customer-field">
+          <label htmlFor="vehicle-chassis">Chasis</label>
+          <input
+            id="vehicle-chassis"
+            type="text"
+            placeholder="Ingrese número de chasis"
+            required
+          />
+        </div>
+
+        <div className="customer-field">
+          <label htmlFor="vehicle-engine">Motor</label>
+          <input
+            id="vehicle-engine"
+            type="text"
+            placeholder="Ingrese número de motor"
+            required
+          />
+        </div>
+      </div>
+    </section>
+  );
+}

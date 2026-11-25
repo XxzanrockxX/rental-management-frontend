@@ -1,6 +1,8 @@
-function MenuCard({ title, description, icon }) {
+import { Link } from 'react-router-dom';
+
+function MenuCard({ title, description, icon, to }) {
   return (
-    <article className="menu-card">
+    <Link to={to} className="menu-card">
       <div className="menu-card__icon" aria-hidden="true">
         {icon}
       </div>
@@ -9,9 +11,8 @@ function MenuCard({ title, description, icon }) {
         <h2 className="menu-card__title">{title}</h2>
         <p className="menu-card__description">{description}</p>
       </div>
-    </article>
+    </Link>
   );
 }
 
 export default MenuCard;
-
