@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import Header from '../components/Header';
+import ContractReadOnly from '../components/contract/ContractReadOnly';
 import './Archives.css';
 
 const STORAGE_KEY = 'advance-rent-a-car-contracts';
@@ -91,36 +92,6 @@ function getSearchableText(contract) {
     contract.selectedLocation?.name,
     dateText,
   ].join(' '));
-}
-
-function getFieldLabel(key) {
-  const labels = {
-    'customer-name': 'Cliente',
-    'customer-id': 'Cédula',
-    'customer-address': 'Dirección',
-    'customer-email': 'Correo electrónico',
-    'customer-phone': 'Teléfono',
-    'work-reference': 'Referencia laboral',
-    'work-reference-phone': 'Teléfono de referencia laboral',
-    'personal-reference': 'Referencia personal',
-    'personal-reference-phone': 'Teléfono de referencia personal',
-    'vehicle-brand': 'Marca',
-    'vehicle-model': 'Modelo',
-    'vehicle-year': 'Año',
-    'vehicle-color': 'Color',
-    'vehicle-plate': 'Placa',
-    'vehicle-chassis': 'Chasis',
-    'vehicle-engine': 'Motor',
-    'departure-date': 'Fecha de salida',
-    'departure-time': 'Hora de salida',
-    'arrival-date': 'Fecha de llegada',
-    'arrival-time': 'Hora de llegada',
-    'departure-kms': 'Kilometraje de salida',
-    'arrival-kms': 'Kilometraje de llegada',
-    'trip-destination': 'Destino',
-  };
-
-  return labels[key] || key.replaceAll('-', ' ');
 }
 
 function Archives() {
@@ -378,18 +349,6 @@ function ContractList({
       {contracts.map((contract) => {
         const isOpen = openedContractId === contract.id;
 
-        const visibleFields = Object.entries(contract).filter(([key, value]) => (
-          typeof value === 'string'
-          && value.trim() !== ''
-          && ![
-            'id',
-            'createdAt',
-            'createdBy',
-            'destination',
-            'travelRecommendation',
-          ].includes(key)
-        ));
-
         return (
           <article className="archives__contract" key={contract.id}>
             <button
@@ -426,40 +385,7 @@ function ContractList({
 
             {isOpen && (
               <div className="archives__contract-details">
-                <h3>Datos del contrato</h3>
-
-                <dl className="archives__details-grid">
-                  {visibleFields.map(([key, value]) => (
-                    <div key={key}>
-                      <dt>{getFieldLabel(key)}</dt>
-                      <dd>{value}</dd>
-                    </div>
-                  ))}
-                </dl>
-
-                {contract.destination && (
-                  <p>
-                    <strong>Destino:</strong>
-                    {' '}
-                    {contract.destination}
-                  </p>
-                )}
-
-                {contract.equipment?.length > 0 && (
-                  <p>
-                    <strong>Equipamiento:</strong>
-                    {' '}
-                    {contract.equipment.join(', ')}
-                  </p>
-                )}
-
-                {contract.travelRecommendation && (
-                  <p>
-                    <strong>Recomendación del viaje:</strong>
-                    {' '}
-                    {contract.travelRecommendation}
-                  </p>
-                )}
+                <ContractReadOnly contract={contract} />
               </div>
             )}
           </article>

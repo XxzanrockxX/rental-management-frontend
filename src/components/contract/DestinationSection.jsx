@@ -1,114 +1,83 @@
 export default function DestinationSection({
-  destination,
+  destination = '',
   onDestinationChange,
-  locationLoading,
-  locations,
+  locationLoading = false,
+  locations = [],
   onLocationSelect,
   locationError,
-  locationDescription,
+  locationDescription = '',
+  readOnly = false,
 }) {
   return (
-<section className="trip-destination">
+    <section className="trip-destination">
+      <h2>DESTINO DEL VIAJE</h2>
 
-  <h2>DESTINO DEL VIAJE</h2>
+      <div className="trip-field">
+        <label htmlFor="trip-destination">
+          Lugar de destino
+        </label>
 
-  <div className="trip-field">
+        <input
+          id="trip-destination"
+          type="text"
+          required={!readOnly}
+          placeholder="Escriba la ciudad o destino"
+          value={destination}
+          onChange={readOnly ? undefined : onDestinationChange}
+          readOnly={readOnly}
+          autoComplete="off"
+        />
+      </div>
 
-    <label htmlFor="trip-destination">Lugar de destino</label>
+      {!readOnly && (
+        <>
+          {locationLoading && (
+            <p className="trip-status">
+              Buscando ubicaciones...
+            </p>
+          )}
 
-    <input
+          {locations.length > 0 && (
+            <ul className="trip-suggestions">
+              {locations.map((location) => (
+                <li
+                  key={`${location.name}-${location.latitude}-${location.longitude}`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => onLocationSelect(location)}
+                  >
+                    <span>{location.name}</span>
 
-      id="trip-destination"
+                    <small>
+                      {[location.admin1, location.country]
+                        .filter(Boolean)
+                        .join(', ')}
+                    </small>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
 
-      type="text"
-       required
+          {locationError && (
+            <p
+              className="trip-status trip-status--error"
+              role="alert"
+            >
+              {locationError}
+            </p>
+          )}
+        </>
+      )}
 
-      placeholder="Escriba la ciudad o destino"
+      <div className="trip-location">
+        <span className="trip-location__label">
+          UBICACIÓN DEL DESTINO
+        </span>
 
-      value={destination}
-
-      onChange={onDestinationChange}
-
-      autoComplete="off"
-
-    />
-
-  </div>
-
-  {locationLoading && (
-
-    <p className="trip-status">
-
-      Buscando ubicaciones...
-
-    </p>
-
-  )}
-
-  {locations.length > 0 && (
-
-    <ul className="trip-suggestions">
-
-      {locations.map((location) => (
-
-        <li
-
-          key={`${location.name}-${location.latitude}-${location.longitude}`}
-
-        >
-
-          <button
-
-            type="button"
-
-            onClick={() => onLocationSelect(location)}
-
-          >
-
-            <span>{location.name}</span>
-
-            <small>
-
-              {[location.admin1, location.country]
-
-                .filter(Boolean)
-
-                .join(', ')}
-
-            </small>
-
-          </button>
-
-        </li>
-
-      ))}
-
-    </ul>
-
-  )}
-
-  {locationError && (
-
-    <p className="trip-status trip-status--error" role="alert">
-
-      {locationError}
-
-    </p>
-
-  )}
-
-  <div className="trip-location">
-
-    <span className="trip-location__label">
-
-      UBICACIÓN DEL DESTINO
-
-    </span>
-
-    <p>{locationDescription}</p>
-
-  </div>
-
-</section>
+        <p>{locationDescription}</p>
+      </div>
+    </section>
   );
 }
