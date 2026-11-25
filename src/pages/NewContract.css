@@ -1,0 +1,170 @@
+/*
+ * Estilos generales del formulario de contrato.
+ * Los estilos específicos de cada componente se cargan mediante @import.
+ */
+@import '../components/contract/CustomerData.css';
+@import '../components/contract/VehicleData.css';
+@import '../components/contract/DateAndMileage.css';
+@import '../components/contract/DestinationSection.css';
+@import '../components/contract/TravelRecommendation.css';
+@import '../components/contract/EquipmentSection.css';
+@import '../components/contract/FuelNeedleGauge.css';
+@import '../components/contract/DamagePanel.css';
+@import '../components/contract/ObservationsPanel.css';
+@import '../components/contract/ContractSave.css';
+
+/* Estructura general */
+.new-contract {
+  width: calc(100% - 48px);
+  max-width: 1500px;
+  margin: 24px auto;
+}
+
+.contract-form {
+  width: 100%;
+  padding: 18px;
+  border: 1px solid #d7e2ef;
+  border-radius: 12px;
+  background-color: #f4f7fb;
+  box-shadow: 0 4px 16px rgb(18 52 90 / 7%);
+}
+
+.contract-top-section {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.contract-left-column {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contract-right-column {
+  flex: 0 0 50%;
+  width: 50%;
+  max-width: 620px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Panel compartido de condición del vehículo */
+.vehicle-condition {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Encabezado del contrato */
+.contract-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
+  padding: 18px 24px;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #12345a, #1d4b7e);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgb(18 52 90 / 15%);
+}
+
+.contract-header__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  line-height: 1;
+}
+
+.contract-header__name {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.contract-header__subtitle {
+  color: #cbdcf0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.contract-header__info {
+  text-align: right;
+}
+
+.contract-header__info h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.contract-header__info p {
+  margin: 6px 0 0;
+  color: #d7e6f5;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* Adaptación general */
+@media screen and (max-width: 900px) {
+  .contract-top-section {
+    flex-direction: column;
+  }
+
+  .contract-right-column {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .vehicle-condition {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .new-contract {
+    width: calc(100% - 20px);
+    margin: 10px auto;
+  }
+
+  .contract-form {
+    padding: 10px;
+  }
+
+  .contract-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .contract-header__name {
+    font-size: 25px;
+  }
+
+  .contract-header__subtitle {
+    font-size: 10px;
+  }
+
+  .contract-header__info {
+    text-align: left;
+  }
+
+  .contract-header__info h1 {
+    font-size: 19px;
+  }
+}

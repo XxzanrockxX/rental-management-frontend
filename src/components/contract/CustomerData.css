@@ -1,0 +1,61 @@
+/* Datos del cliente */
+.customer-data {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #c7d8ee;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #12345a;
+}
+
+.customer-data h2 {
+  margin: 0 0 10px;
+  color: #12345a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.customer-data__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.customer-field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.customer-field label {
+  color: #12345a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.customer-field input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 5px 8px;
+  border: 1px solid #cbd8e8;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #12345a;
+  font-size: 12px;
+}
+
+.customer-field--full {
+  grid-column: 1 / -1;
+}
+
+@media screen and (max-width: 600px) {
+  .customer-data__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .customer-field--full {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,94 @@
+/* Observaciones, nota, declaración y firma */
+.observations-panel {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #c7d8ee;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #12345a;
+}
+
+.observations-panel textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 8px;
+  resize: vertical;
+  border: 1px solid #cbd8e8;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #12345a;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.observation-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.observation-field label {
+  color: #12345a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.observation-field input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 5px 8px;
+  border: 1px solid #cbd8e8;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #12345a;
+  font-size: 12px;
+}
+
+/* Nota y declaración */
+.observations-note {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #c7d8ee;
+  color: #12345a;
+}
+
+.observations-note h2 {
+  margin: 0 0 10px;
+  color: #12345a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.observations-note p {
+  margin: 0 0 12px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.observations-note .contract-declaration {
+  max-width: 100%;
+  margin: 18px 0;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Firma del cliente */
+.client-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 12px 10px 8px;
+  color: #12345a;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.client-signature__line {
+  width: 80%;
+  height: 38px;
+  border-bottom: 1px solid #12345a;
+}

@@ -1,0 +1,36 @@
+/* Recomendación meteorológica del viaje */
+.trip-recommendation {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #c7d8ee;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #12345a;
+}
+
+.trip-recommendation h2 {
+  margin: 0 0 10px;
+  color: #12345a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.trip-recommendation textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 8px;
+  resize: vertical;
+  border: 1px solid #cbd8e8;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #12345a;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.trip-recommendation textarea[readonly] {
+  background-color: #f7faff;
+  cursor: default;
+  white-space: pre-wrap;
+}

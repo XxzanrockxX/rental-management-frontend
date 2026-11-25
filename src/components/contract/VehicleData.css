@@ -1,0 +1,35 @@
+/* Datos del vehículo */
+.vehicle-data {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #c7d8ee;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #12345a;
+}
+
+.vehicle-data h2 {
+  margin: 0 0 10px;
+  color: #12345a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.vehicle-data__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+@media screen and (max-width: 600px) {
+  .vehicle-data__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .vehicle-data__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,58 @@
+/* Indicador semicircular de combustible con aguja */
+.fuel-needle-gauge {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.fuel-needle-gauge__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  touch-action: none;
+  user-select: none;
+}
+
+.fuel-needle-gauge__tick {
+  stroke: #12345a;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.fuel-needle-gauge__label {
+  fill: #12345a;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.fuel-needle-gauge__pump {
+  fill: #12345a;
+  stroke: none;
+}
+
+.fuel-needle-gauge__needle {
+  stroke: #d43b35;
+  stroke-width: 4;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.fuel-needle-gauge__knob {
+  fill: #d43b35;
+  stroke: #ffffff;
+  stroke-width: 2;
+  cursor: grab;
+  touch-action: none;
+}
+
+.fuel-needle-gauge__knob:active {
+  cursor: grabbing;
+}
+
+.fuel-needle-gauge__center {
+  fill: #12345a;
+  pointer-events: none;
+}

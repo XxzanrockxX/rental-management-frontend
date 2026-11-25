@@ -1,0 +1,135 @@
+
+.vehicles-page {
+  min-height: 100vh;
+}
+
+.vehicles-page__content {
+  width: min(1100px, 90%);
+  margin: 40px auto;
+}
+
+.vehicles-page__heading {
+  margin-bottom: 28px;
+}
+
+.vehicles-page__heading h1 {
+  margin: 0 0 8px;
+  color: #12345a;
+  font-size: 26px;
+}
+
+.vehicles-page__heading p {
+  margin: 0;
+  color: #687586;
+  font-size: 14px;
+}
+
+.vehicles-form {
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #e2e7ed;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(18, 52, 90, 0.06);
+}
+
+.vehicles-form__section h2 {
+  margin: 0 0 22px;
+  color: #12345a;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.vehicles-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.vehicles-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vehicles-form__field label {
+  color: #344256;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.vehicles-form__field input {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #d5dce5;
+  border-radius: 6px;
+  outline: none;
+  color: #263445;
+  font: inherit;
+  font-size: 13px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.vehicles-form__field input:focus {
+  border-color: #2563a6;
+}
+
+.vehicles-form__field input::placeholder {
+  color: #9aa5b3;
+}
+
+.vehicles-form__feedback {
+  margin: 22px 0 0;
+  font-size: 13px;
+}
+
+.vehicles-form__feedback--success {
+  color: #168044;
+}
+
+.vehicles-form__feedback--error {
+  color: #c0392b;
+}
+
+.vehicles-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 28px;
+}
+
+.vehicles-form__actions button {
+  min-height: 42px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 6px;
+  background: #12345a;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.vehicles-form__actions button:hover {
+  background: #1c4c7d;
+}
+
+@media (max-width: 650px) {
+  .vehicles-page__content {
+    width: 92%;
+    margin: 28px auto;
+  }
+
+  .vehicles-form {
+    padding: 20px;
+  }
+
+  .vehicles-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicles-form__actions button {
+    width: 100%;
+  }
+}

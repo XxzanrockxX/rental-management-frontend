@@ -1,0 +1,120 @@
+/* Destino, ubicación encontrada y sugerencias */
+.trip-destination {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #c7d8ee;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #12345a;
+}
+
+.trip-destination h2 {
+  margin: 0 0 10px;
+  color: #12345a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.trip-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.trip-field label {
+  color: #12345a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.trip-field input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 5px 8px;
+  border: 1px solid #cbd8e8;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #12345a;
+  font-size: 12px;
+}
+
+.trip-location {
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px dashed #c7d8ee;
+  border-radius: 6px;
+  background-color: #f7faff;
+}
+
+.trip-location__label {
+  color: #12345a;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.trip-location p {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.trip-suggestions {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 10px;
+  right: 10px;
+  max-height: 190px;
+  overflow-y: auto;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #c7d8ee;
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgb(18 52 90 / 12%);
+}
+
+.trip-suggestions li + li {
+  border-top: 1px solid #e5edf6;
+}
+
+.trip-suggestions button {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  padding: 9px;
+  border: 0;
+  background: #ffffff;
+  color: #12345a;
+  text-align: left;
+  cursor: pointer;
+}
+
+.trip-suggestions button:hover {
+  background-color: #f0f5fb;
+}
+
+.trip-suggestions button span {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.trip-suggestions button small {
+  color: #64748b;
+  font-size: 11px;
+}
+
+.trip-status {
+  margin: 6px 0;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.trip-status--error {
+  color: #b42318;
+}

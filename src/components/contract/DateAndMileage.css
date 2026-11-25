@@ -1,0 +1,58 @@
+/* Fechas, horas y kilometrajes */
+.contract-dates {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 8px;
+}
+
+.contract-date-group {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 6px;
+}
+
+.contract-field {
+  min-width: 0;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border: 1px solid #c7d8ee;
+  border-radius: 8px;
+  background-color: #f7faff;
+}
+
+.contract-field__content {
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contract-field__content label {
+  color: #12345a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.contract-field__content input {
+  width: 100%;
+  min-width: 0;
+  height: 30px;
+  padding: 4px 6px;
+  border: 1px solid #cbd8e8;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #12345a;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 600px) {
+  .contract-dates {
+    grid-template-columns: 1fr;
+  }
+}
