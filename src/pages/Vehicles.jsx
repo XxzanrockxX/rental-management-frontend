@@ -3,6 +3,17 @@ import Header from '../components/Header';
 import './Vehicles.css';
 
 const STORAGE_KEY = 'advance-rent-a-car-vehicles';
+const MAX_VEHICLE_YEAR = new Date().getFullYear() + 1;
+
+function normalizePlate(value) {
+  return String(value ?? '')
+    .toUpperCase()
+    .replace(/[\s-]/g, '');
+}
+
+function normalizeChassis(value) {
+  return String(value ?? '').trim().toUpperCase();
+}
 
 function Vehicles() {
   const [feedback, setFeedback] = useState({
@@ -17,16 +28,64 @@ function Vehicles() {
     const formData = new FormData(form);
 
     const vehicle = {
-      'vehicle-brand': formData.get('vehicle-brand').trim(),
-      'vehicle-model': formData.get('vehicle-model').trim(),
-      'vehicle-year': formData.get('vehicle-year').trim(),
-      'vehicle-color': formData.get('vehicle-color').trim(),
-      'vehicle-plate': formData.get('vehicle-plate').trim().toUpperCase(),
-      'vehicle-chassis': formData.get('vehicle-chassis').trim(),
-      'vehicle-engine': formData.get('vehicle-engine').trim(),
+      'vehicle-brand': String(formData.get('vehicle-brand') ?? '').trim(),
+      'vehicle-model': String(formData.get('vehicle-model') ?? '').trim(),
+      'vehicle-year': String(formData.get('vehicle-year') ?? '').trim(),
+      'vehicle-color': String(formData.get('vehicle-color') ?? '').trim(),
+      'vehicle-plate': String(formData.get('vehicle-plate') ?? '')
+        .trim()
+        .toUpperCase()
+        .replace(/\s+/g, ''),
+      'vehicle-chassis': String(formData.get('vehicle-chassis') ?? '').trim(),
+      'vehicle-engine': String(formData.get('vehicle-engine') ?? '').trim(),
       createdAt: new Date().toISOString(),
       createdBy: sessionStorage.getItem('advance-current-user') || '',
     };
+
+    // Validar que ningún campo esté vacío o contenga solo espacios.
+    const emptyField = Object.entries(vehicle).some(
+      ([key, value]) => (
+        key.startsWith('vehicle-') && !value
+      )
+    );
+
+    if (emptyField) {
+      setFeedback({
+        type: 'error',
+        message: 'Todos los campos son obligatorios.',
+      });
+      return;
+    }
+
+    // Validar que el año sea un número entero válido.
+    const year = Number(vehicle['vehicle-year']);
+
+    if (
+      !Number.isInteger(year)
+      || year < 1900
+      || year > MAX_VEHICLE_YEAR
+    ) {
+      setFeedback({
+        type: 'error',
+        message: `El año debe ser un número entero entre 1900 y ${MAX_VEHICLE_YEAR}.`,
+      });
+      return;
+    }
+
+    // Validar placas ecuatorianas: ABC-123 o ABC-1234.
+    const platePattern = /^[A-Z]{3}\d{3,4}$/;
+    const normalizedPlate = normalizePlate(vehicle['vehicle-plate']);
+
+    if (!platePattern.test(normalizedPlate)) {
+      setFeedback({
+        type: 'error',
+        message: 'La placa no tiene un formato válido. Ejemplo: ABC-1234.',
+      });
+      return;
+    }
+
+    // Guardar la placa con un formato uniforme.
+    vehicle['vehicle-plate'] = `${normalizedPlate.slice(0, 3)}-${normalizedPlate.slice(3)}`;
 
     try {
       const savedVehicles = JSON.parse(
@@ -34,12 +93,16 @@ function Vehicles() {
       );
 
       if (!Array.isArray(savedVehicles)) {
-        throw new Error('El almacenamiento de vehículos tiene un formato inválido.');
+        throw new Error(
+          'El almacenamiento de vehículos tiene un formato inválido.'
+        );
       }
 
+      // Evitar placas duplicadas.
       const duplicatePlate = savedVehicles.some(
         (savedVehicle) => (
-          savedVehicle['vehicle-plate']?.toUpperCase() === vehicle['vehicle-plate']
+          normalizePlate(savedVehicle?.['vehicle-plate'])
+          === normalizedPlate
         )
       );
 
@@ -51,9 +114,32 @@ function Vehicles() {
         return;
       }
 
+      // Evitar números de chasis duplicados.
+      const normalizedVehicleChassis = normalizeChassis(
+        vehicle['vehicle-chassis']
+      );
+
+      const duplicateChassis = savedVehicles.some(
+        (savedVehicle) => (
+          normalizeChassis(savedVehicle?.['vehicle-chassis'])
+          === normalizedVehicleChassis
+        )
+      );
+
+      if (duplicateChassis) {
+        setFeedback({
+          type: 'error',
+          message: 'Ya existe un vehículo registrado con ese número de chasis.',
+        });
+        return;
+      }
+
       savedVehicles.push(vehicle);
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(savedVehicles));
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(savedVehicles)
+      );
 
       form.reset();
 
@@ -113,7 +199,8 @@ function Vehicles() {
                   name="vehicle-year"
                   type="number"
                   min="1900"
-                  max={new Date().getFullYear() + 1}
+                  max={MAX_VEHICLE_YEAR}
+                  step="1"
                   placeholder="Ej. 2024"
                   required
                 />
@@ -136,7 +223,8 @@ function Vehicles() {
                   id="vehicle-plate"
                   name="vehicle-plate"
                   type="text"
-                  placeholder="Ingrese número de placa"
+                  placeholder="Ej. ABC-1234"
+                  maxLength="9"
                   required
                 />
               </div>
